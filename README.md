@@ -3,9 +3,9 @@
 
 ### Tools
 
-- CrossMap (0.6.1)
-- vcftools
-- bcftools (1.11)
+- CrossMap (v0.6.1)
+- vcftools (v0.1.16)
+- bcftools (v1.11)
 - popscle, demuxlet
 - Cellranger - 6.1.2 (October 25, 2021)
 
