@@ -1,11 +1,10 @@
 # AI-MD single-cell RNA-seq
-## Requirements
 
-- [Tools](#Tools)
-- [Datasets](#Datasets)
-- [References](#References)
+- [Requirements](#Requirements)
 - [CPU specifications](#CPU-specifications)
 - [GPU specifications](#GPU-specifications)
+
+## Requirements
 
 ### Tools
 
