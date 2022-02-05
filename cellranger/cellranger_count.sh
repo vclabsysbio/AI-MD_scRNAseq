@@ -1,9 +1,9 @@
 cd /output-path && \
 
 ref_gex="/path/refdata-gex-GRCh38-2020-A" && \
-fastq_path="/path-of-fastq-files/" && \
+fastq_path="/path-of-GEX-fastq-files/" && \
 id_name="idname" && \
-sample_name="prefix-of-fastq-file" && \
+sample_name="prefix-of-GEX-fastq-files" && \
 expect_cells="22000" && \
 
 time cellranger count --id=$id_name \
