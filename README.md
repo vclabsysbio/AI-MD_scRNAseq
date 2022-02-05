@@ -15,16 +15,16 @@
 - Cellranger (v6.1.2)
 
 ### Datasets
-1. GEX
+- GEX
    - Library kit - Chromium Next GEM Single Cell 5p RNA library v2
    - Total Read1 + Read2 = 2,372,137,918 reads
-2. TCR
+- TCR
    - Library kit - Chromium Next GEM Single Cell 5p RNA library v2
    - Total Read1 + Read2 = 141,348,498 reads
-3. BCR
+- BCR
    - Library kit - Chromium Next GEM Single Cell 5p RNA library v2
    - Total Read1 + Read2 = 62,366,650 reads
-4. GSA
+- GSA
    - Platform - Illumina Infinium SNP Genotyping Array (GSA MG v2)
    - Total SNPs 766,221 SNPs
 
