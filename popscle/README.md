@@ -1,9 +1,17 @@
 # Demutiplexing
-- [Command](#command)
+- [Tools](#Tools)
+- [Commands](#Commands)
 - [CPU performance testing](#CPU-performance-testing)
 - [GPU performance testing](#GPU-performance-testing)
 
-## Command
+## Tools
+- CrossMap (v0.6.1)
+- vcftools (v0.1.16)
+- bcftools (v1.11)
+- samtools (v1.10)
+- popscle (include _demuxlet_ v2) [GitHub](https://github.com/statgen/popscle)
+
+## Commands
 - **CrossMap** (optional)
 - **VCF proprocessing** (optional)
 - **VCF filtering** (required)
