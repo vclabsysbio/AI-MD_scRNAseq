@@ -1,5 +1,55 @@
 # Mapping
 
+- **Command**
+  - GEX mapping
+  - VDJ mapping
+    - TCR
+    - BCR
+- **CPU performance testing**
+  - ICBS server
+  - ICT-HPC server
+- **GPU performance testing**
+  - ICT-HPC server
+
+## Command
+
+### GEX mapping
+
+```
+cellranger count --id=$id_name \
+                 --transcriptome=$ref_gex \
+                 --fastqs=$fastq_path \
+                 --sample=$sample_name \
+                 --expect-cells=$expect_cells \
+                 --localcores=8 \
+                 --localmem=64 \
+                 --chemistry=SC5P-R2
+```
+
+### VDJ mapping
+**TCR mapping**
+```
+cellranger vdj --id=$id_name \
+               --reference=$ref_vdj \
+               --fastqs=$fastq_path \
+               --sample=$sample_name \
+               --localcores=8 \
+               --localmem=64 \
+               --chain=TR
+```
+
+**BCR mapping**
+
+```
+cellranger vdj --id=$id_name \
+               --reference=$ref_vdj \
+               --fastqs=$fastq_path \
+               --sample=$sample_name \
+               --localcores=8 \
+               --localmem=64 \
+               --chain=IG
+```
+
 ## CPU performance testing
 ### ICBS server
 
