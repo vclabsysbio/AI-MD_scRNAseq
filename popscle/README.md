@@ -4,14 +4,22 @@
 - [GPU performance testing](#GPU-performance-testing)
 
 ## Command
-- CrossMap (optional)
-- VCF proprocessing (optional)
-- VCF filtering (required)
-- Demultiplexing
+- **CrossMap** (optional)
+- **VCF proprocessing** (optional)
+- **VCF filtering** (required)
+- **Demultiplexing**
 
+**Inputs**
+- Liftover file - ex. `hg19ToHg38.over.chain.gz`
+- Genotyping data vcf filename - ex. `HB00004766`
+- Human reference genome fasta file - ex. `hg38.fa`
+- Outputs filename - ex. `HB00004766.out.hg38`
 ```
 CrossMap.py vcf $LIFTOVER_FILE ./${VCF_OLD_FILENAME}.vcf $HUMAN_GENOME_REF_FILE ${VCF_FILENAME}.vcf
 ```
+**Outputs**
+- Map file - ex. `HB00004766.out.hg38.vcf`
+- Unmap file - ex. `HB00004766.out.hg38.vcf.unmap`
 
 ```
 vcftools --vcf ./6${VCF_FILENAME}_subsetsamples.vcf \
