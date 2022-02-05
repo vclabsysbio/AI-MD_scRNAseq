@@ -8,7 +8,7 @@ VClab server
 |----------------------|--------------|---------------|--------------|
 | Cellranger count     | 1233m38.423s | 6615m45.040s  | 248m10.156s  | 
 | (TCR) Cellranger vdj |
-
+| (BCR) Cellranger vdj | 84m51.065s   | 193m31.028s   | 18m19.740s   |
 
 
 
