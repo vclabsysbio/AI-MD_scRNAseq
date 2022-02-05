@@ -9,18 +9,22 @@
 - **VCF filtering** (required)
 - **Demultiplexing**
 
+### CrossMap
 **Inputs**
-- Liftover file - ex. `hg19ToHg38.over.chain.gz`
+- Liftover file - ex. `./hg19ToHg38.over.chain.gz`
 - Genotyping data vcf filename - ex. `HB00004766`
-- Human reference genome fasta file - ex. `hg38.fa`
+- Human reference genome fasta file - ex. `./hg38.fa`
 - Outputs filename - ex. `HB00004766.out.hg38`
 ```
 CrossMap.py vcf $LIFTOVER_FILE ./${VCF_OLD_FILENAME}.vcf $HUMAN_GENOME_REF_FILE ${VCF_FILENAME}.vcf
 ```
 **Outputs**
-- Map file - ex. `HB00004766.out.hg38.vcf`
-- Unmap file - ex. `HB00004766.out.hg38.vcf.unmap`
+- Map vcf file - ex. `HB00004766.out.hg38.vcf`
+- Unmap vcf file - ex. `HB00004766.out.hg38.vcf.unmap`
 
+### VCF filtering
+**Inputs**
+- Map vcf file - ex. `HB00004766.out.hg38.vcf`
 ```
 vcftools --vcf ./6${VCF_FILENAME}_subsetsamples.vcf \
          --remove-indels \
@@ -34,9 +38,18 @@ vcftools --vcf ./6${VCF_FILENAME}_subsetsamples.vcf \
          --remove-filtered-geno-all \
          --recode \
          --recode-INFO-all \
-         --out 7${VCF_FILENAME}_rm_indel
+         --out 7${VCF_FILENAME}_excluded
 ```
+**Outputs**
+- vcf file - ex. `HB00004766.out.hg38_excluded.recode.vcf`
 
+### Demultiplexing
+**Inputs**
+- BAM file - ex. `./possorted_genome_bam.bam`
+- vcf file - ex. `./HB00004766.out.hg38_excluded.recode.vcf`
+- Barcode file - ex. `./barcodes.tsv`
+- Sample list file - ex. `./sample_name_CVc_B2.txt`
+- Output filename - ex. `CVc_B2rxn2`
 ```
 popscle demuxlet --sam $BAM_FILE \
 	         --tag-group CB \
@@ -47,6 +60,8 @@ popscle demuxlet --sam $BAM_FILE \
 	         --group-list $BARCODE_FILE \
 	         --sm-list $SAMPLE_LIST_FILE 
 ```
+**Outputs**
+- Demultiplexed file - ex. `CVc_B2rxn2.best`
 
 ## CPU performance testing
 **ICBS server**
