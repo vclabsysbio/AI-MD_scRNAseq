@@ -12,20 +12,23 @@
 ### Datasets
 
 1. GEX
-   - R1, R2, I1, I2
+   - Library kit - Chromium Next GEM Single Cell 5p RNA library v2
+   - Total Read1 + Read2 = 2,372,137,918 reads
 2. TCR
-   - R1, R2, I1, I2
+   - Library kit - Chromium Next GEM Single Cell 5p RNA library v2
+   - Total Read1 + Read2 = 141,348,498 reads
 3. BCR
-   - R1, R2, I1, I2
-4. GSAv2
-   - SNPs
+   - Library kit - Chromium Next GEM Single Cell 5p RNA library v2
+   - Total Read1 + Read2 = 62,366,650 reads
+4. GSA
+   - Platform - Illumina Infinium SNP Genotyping Array (GSA MG v2)
+   - Total SNPs 766,221 SNPs
 
 ### References
-- hg19ToHg38.over.chain.gz (December 31, 2013) [Download](http://hgdownload.soe.ucsc.edu/goldenPath/hg19/liftOver/hg19ToHg38.over.chain.gz)
-- Human Genome GRCh38 (January 15, 2014) [Download](https://hgdownload.cse.ucsc.edu/goldenpath/hg38/bigZips/hg38.fa.gz)
-- References - 2020-A (July 7, 2020) [Download](https://cf.10xgenomics.com/supp/cell-exp/refdata-gex-GRCh38-2020-A.tar.gz)
-- Human Reference Genome (GRCh38 2020-A: Updated July 7, 2020))
-- GRCh38 Reference - 5.0.0 (November 19, 2020) [Download](https://cf.10xgenomics.com/supp/cell-vdj/refdata-cellranger-vdj-GRCh38-alts-ensembl-5.0.0.tar.gz)
+- hg19 To Hg38 over chain (December 31, 2013) [Download](http://hgdownload.soe.ucsc.edu/goldenPath/hg19/liftOver/hg19ToHg38.over.chain.gz)
+- Human Genome GRCh38 Reference (January 15, 2014) [Download](https://hgdownload.cse.ucsc.edu/goldenpath/hg38/bigZips/hg38.fa.gz)
+- GEX Reference - Human GRCh38 2020-A (July 7, 2020) [Download](https://cf.10xgenomics.com/supp/cell-exp/refdata-gex-GRCh38-2020-A.tar.gz)
+- VDJ Reference - Human GRCh38 5.0.0 (November 19, 2020) [Download](https://cf.10xgenomics.com/supp/cell-vdj/refdata-cellranger-vdj-GRCh38-alts-ensembl-5.0.0.tar.gz)
 
 ## single-cell RNA-seq on CPU specifications
 
