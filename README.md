@@ -3,7 +3,7 @@
 
 ### Tools
 
-- crossmap
+- CrossMap (0.6.1)
 - vcftools
 - bcftools
 - popscle, demuxlet
