@@ -27,7 +27,7 @@ cellranger count --id=$id_name \
 ```
 
 ### VDJ mapping
-**TCR mapping**
+- **TCR mapping**
 ```
 cellranger vdj --id=$id_name \
                --reference=$ref_vdj \
@@ -38,7 +38,7 @@ cellranger vdj --id=$id_name \
                --chain=TR
 ```
 
-**BCR mapping**
+- **BCR mapping**
 
 ```
 cellranger vdj --id=$id_name \
