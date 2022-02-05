@@ -1,7 +1,7 @@
 # AI-MD single-cell RNA-seq
 ## Requirements
 
-**Tools**
+### Tools
 
 - crossmap
 - vcftools
@@ -9,7 +9,7 @@
 - popscle, demuxlet
 - Cellranger - 6.1.2 (October 25, 2021)
 
-**Datasets**
+### Datasets
 
 1. GEX
    - R1, R2, I1, I2
@@ -20,7 +20,7 @@
 4. GSAv2
    - SNPs
 
-**References**
+### References
 - hg19ToHg38.over.chain.gz (December 31, 2013) [Download](http://hgdownload.soe.ucsc.edu/goldenPath/hg19/liftOver/hg19ToHg38.over.chain.gz)
 - References - 2020-A (July 7, 2020) [Download](https://cf.10xgenomics.com/supp/cell-exp/refdata-gex-GRCh38-2020-A.tar.gz)
 - Human Reference Genome (GRCh38 2020-A: Updated July 7, 2020))
@@ -52,7 +52,7 @@
 
 **Model name:** AMD EPYC 7742 64-Core Processor
 
-**Operating System Version:** Ubuntu 20.04.2 LTS (focal)
+**Operating System:** Ubuntu 20.04.2 LTS (focal)
 
 **CPUs:** 256
 
