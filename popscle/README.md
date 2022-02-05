@@ -35,13 +35,13 @@ vcftools --vcf ./6${VCF_FILENAME}_subsetsamples.vcf \
 
 ```
 popscle demuxlet --sam $BAM_FILE \
-	               --tag-group CB \
-	               --tag-UMI UB \
-	               --vcf ./${NEW_VCF_FILENAME}_excluded.vcf \
-	               --field GT \
-	               --out $DEMUXLET_OUTPUT \
-	               --group-list $BARCODE_FILE \
-	               --sm-list $SAMPLE_LIST_FILE 
+	         --tag-group CB \
+	         --tag-UMI UB \
+	         --vcf ./${NEW_VCF_FILENAME}_excluded.vcf \
+	         --field GT \
+	         --out $DEMUXLET_OUTPUT \
+	         --group-list $BARCODE_FILE \
+	         --sm-list $SAMPLE_LIST_FILE 
 ```
 
 
