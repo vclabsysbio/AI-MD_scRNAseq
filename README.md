@@ -1,11 +1,18 @@
 # AI-MD single-cell RNA-seq
 ## Requirements
 
+- [Tools](#Tools)
+- [Datasets](#Datasets)
+- [References](#References)
+- [CPU specifications](#CPU-specifications)
+- [GPU specifications](#GPU-specifications)
+
 ### Tools
 
 - CrossMap (v0.6.1)
 - vcftools (v0.1.16)
 - bcftools (v1.11)
+- samtools (v1.10)
 - popscle (include _demuxlet_ v2) [GitHub](https://github.com/statgen/popscle)
 - Cellranger - 6.1.2
 
@@ -30,7 +37,7 @@
 - GEX Reference - Human GRCh38 2020-A (July 7, 2020) [Download](https://cf.10xgenomics.com/supp/cell-exp/refdata-gex-GRCh38-2020-A.tar.gz)
 - VDJ Reference - Human GRCh38 5.0.0 (November 19, 2020) [Download](https://cf.10xgenomics.com/supp/cell-vdj/refdata-cellranger-vdj-GRCh38-alts-ensembl-5.0.0.tar.gz)
 
-## single-cell RNA-seq on CPU specifications
+## CPU specifications
 
 ### Specification ICBS server
 
@@ -64,4 +71,4 @@
 
 
 
-## single-cell RNA-seq on GPU specifications
+## GPU specifications
