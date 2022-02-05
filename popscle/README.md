@@ -5,8 +5,33 @@ link: [CPU performance testing](#cpu-performance-testing)
 
 ## Command
 
+```
+vcftools --vcf ./6${VCF_FILENAME}_subsetsamples.vcf \
+         --remove-indels \
+         --max-missing-count 0 \
+         --maf 0.01 \
+         --max-maf 0.99 \
+         --max-alleles 2 \
+         --not-chr chrM \
+         --not-chr chrX \
+         --not-chr chrY \
+         --remove-filtered-geno-all \
+         --recode \
+         --recode-INFO-all \
+         --out 7${VCF_FILENAME}_rm_indel
+```
 
 
+```
+popscle demuxlet --sam $BAM_FILE \
+	               --tag-group CB \
+	               --tag-UMI UB \
+	               --vcf ./${NEW_VCF_FILENAME}_excluded.vcf \
+	               --field GT \
+	               --out $DEMUXLET_OUTPUT \
+	               --group-list $BARCODE_FILE \
+	               --sm-list $SAMPLE_LIST_FILE 
+```
 
 
 ## CPU performance testing
