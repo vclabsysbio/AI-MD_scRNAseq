@@ -1,7 +1,7 @@
 # Demutiplexing
-link: [Command](https://github.com/vclabsysbio/AI-MD_scRNAseq/edit/main/popscle/README.md#command)
+link: [Command](#command)
 
-link: [CPU performance testing](https://github.com/vclabsysbio/AI-MD_scRNAseq/edit/main/popscle/README.md#cpu-performance-testing)
+link: [CPU performance testing](#cpu-performance-testing)
 
 ## Command
 
