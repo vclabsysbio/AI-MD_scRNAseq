@@ -1,12 +1,18 @@
-cd /home/sarintip.ngu/Covid_vac/GSA/GSA/Final_Analysis_Result/SNP_genotyping/vcf && \
+cd /path/ && \
 
-export VCF_FILENAME=HB00004766.out.hg38 && \
-export NEW_VCF_FILENAME=HB00004766.out.hg38_CVcB2rxn1_16sam && \
-export BAM_FILE=/home/sarintip.ngu/Covid_vac/GEX/cellranger_outputs/CovidVac_B2_rxn1_612/outs/possorted_genome_bam.bam && \
-export REF_FASTA_FILE=/home/sarintip.ngu/References/refdata-gex-GRCh38-2020-A/fasta/genome.fa.fai && \
-export SAMPLE_LIST_FILE=sample_name_CVc_B2.txt && \
-export BARCODE_FILE=/home/sarintip.ngu/Covid_vac/GEX/cellranger_outputs/CovidVac_B2_rxn1_612/barcodes.tsv && \
-export DEMUXLET_OUTPUT=/home/sarintip.ngu/Covid_vac/GEX/demuxlet_outputs/CovidVac_B2_rxn1_nominsnp_20220124_hg38_maf001_099 && \
+export VCF_OLD_FILENAME=filename
+export LIFTOVER_FILE=/path/filename
+export HUMAN_GENOME_REF_FILE=/path/filename
+export VCF_FILENAME=filename && \
+export NEW_VCF_FILENAME=filename && \
+#export BAM_FILE=/path/filename && \
+export REF_FASTA_FILE=/path/filename && \
+export SAMPLE_LIST_FILE=/path/filename && \
+export BARCODE_FILE=/path/filename && \
+export DEMUXLET_OUTPUT=/path/filename && \
+
+echo "Liftover hg19 to GRCh38" && \
+time CrossMap.py vcf $LIFTOVER_FILE ./${VCF_OLD_FILENAME}.vcf $HUMAN_GENOME_REF_FILE ${VCF_FILENAME}.vcf && \
 
 echo "Files for preprocessiong" && \
 echo "VCF file = $VCF_FILENAME" && \
@@ -83,19 +89,21 @@ bcftools view -S $SAMPLE_LIST_FILE -o ./6${VCF_FILENAME}_subsetsamples.vcf ./5${
 rm ./4${VCF_FILENAME}_chrname_edited_sorted.vcf && \
 rm ./5${VCF_FILENAME}_subsetchr.vcf && \
 
-#mv ./6${VCF_FILENAME}_subsetsamples.vcf ./${NEW_VCF_FILENAME}_subsetsamples.vcf && \
-
-
-#bcftools norm -f $REF_FASTA_FILE -c sx -d all -O v -o ./7${VCF_FILENAME}_subsetsamples.vcf ./6${VCF_FILENAME}_subsetsamples.vcf
-
-
-echo "Remove indel"
-vcftools --vcf ./6${VCF_FILENAME}_subsetsamples.vcf --remove-indels --max-missing-count 0 --maf 0.01 --max-maf 0.99 --recode --recode-INFO-all --out 7${VCF_FILENAME}_rm_indel
-mv ./7${VCF_FILENAME}_rm_indel.recode.vcf ./7${VCF_FILENAME}_rm_indel.vcf && \
-
-echo "Remove 0/0 1/1 in all samples"
-vcftools --vcf ./7${VCF_FILENAME}_rm_indel.vcf --max-alleles 2 --not-chr chrM --not-chr chrX --not-chr chrY --remove-filtered-geno-all --recode --recode-INFO-all --out 8${NEW_VCF_FILENAME}_excluded
-mv ./8${NEW_VCF_FILENAME}_excluded.recode.vcf ./8${NEW_VCF_FILENAME}_excluded.vcf && \
+echo "Remove indel,  0/0 1/1 in all samples"
+time vcftools --vcf ./6${VCF_FILENAME}_subsetsamples.vcf \
+         --remove-indels \
+         --max-missing-count 0 \
+         --maf 0.01 \
+         --max-maf 0.99 \
+         --max-alleles 2 \
+         --not-chr chrM \
+         --not-chr chrX \
+         --not-chr chrY \
+         --remove-filtered-geno-all \
+         --recode \
+         --recode-INFO-all \
+         --out 7${VCF_FILENAME}_rm_indel
+mv ./7${VCF_FILENAME}_rm_indel.recode.vcf ./${NEW_VCF_FILENAME}_excluded.vcf && \
 
 rm ./6${VCF_FILENAME}_subsetsamples.vcf && \
 
@@ -105,12 +113,13 @@ echo "dumuxlet" && \
 time popscle demuxlet --sam $BAM_FILE \
 	--tag-group CB \
 	--tag-UMI UB \
-	--vcf ./8${NEW_VCF_FILENAME}_excluded.vcf \
+	--vcf ./${NEW_VCF_FILENAME}_excluded.vcf \
 	--field GT \
 	--out $DEMUXLET_OUTPUT \
 	--group-list $BARCODE_FILE \
 	--sm-list $SAMPLE_LIST_FILE 
 #	--alpha 0.5
 #	--min-snp 50 \
+
 echo "!!!! Demultiplexing Finish !!!!"
 echo "Please check your output and log file"
