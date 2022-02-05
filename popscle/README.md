@@ -43,6 +43,13 @@ vcftools --vcf ./6${VCF_FILENAME}_subsetsamples.vcf \
 **Outputs**
 - vcf file - ex. `HB00004766.out.hg38_excluded.recode.vcf`
 
+### VCF proprocessing
+**Inputs**
+```
+(optional)
+```
+**Outputs**
+
 ### Demultiplexing
 **Inputs**
 - BAM file - ex. `./possorted_genome_bam.bam`
@@ -64,8 +71,7 @@ popscle demuxlet --sam $BAM_FILE \
 - Demultiplexed file - ex. `CVc_B2rxn2.best`
 
 ## CPU performance testing
-**ICBS server**
-
+### ICBS server
 Settings
 - CPUs: xx
 - Memory: xxxGB
@@ -78,8 +84,7 @@ Settings
 | demuxlet             | 1666m37.889s | 1583m21.216s  | 27m49.324s   |
 
 
-**ICT-HPC server**
-
+### ICT-HPC server
 Settings
 - CPUs: 64
 - Memory: 800GB
