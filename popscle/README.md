@@ -5,6 +5,17 @@ link: [CPU performance testing](#cpu-performance-testing)
 
 ## Command
 
+- CrossMap (optional)
+- VCF proprocessing (optional)
+- VCF filtering (required)
+- Demultiplexing
+
+
+```
+CrossMap.py vcf $LIFTOVER_FILE ./${VCF_OLD_FILENAME}.vcf $HUMAN_GENOME_REF_FILE ${VCF_FILENAME}.vcf
+```
+
+
 ```
 vcftools --vcf ./6${VCF_FILENAME}_subsetsamples.vcf \
          --remove-indels \
@@ -35,9 +46,12 @@ popscle demuxlet --sam $BAM_FILE \
 
 
 ## CPU performance testing
-VClab server
 
+**ICBS server Specifications**
 
+Settings
+- CPUs: xx
+- Memory: xxxGB
 
 | tools                | real         | user          | sys          |
 |----------------------|--------------|---------------|--------------|
@@ -47,12 +61,11 @@ VClab server
 | demuxlet             | 1666m37.889s | 1583m21.216s  | 27m49.324s   |
 
 
+**ICT-HPC server**
 
-
-
-
-VDJ reference: refdata-cellranger-vdj-GRCh38-alts-ensembl-5.0.0
-
+Settings
+- CPUs: 64
+- Memory: 800GB
 
 | tools                | real         | user          | sys          |
 |----------------------|--------------|---------------|--------------|
