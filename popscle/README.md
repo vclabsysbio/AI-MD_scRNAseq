@@ -1,20 +1,17 @@
 # Demutiplexing
-link: [Command](#command)
-
-link: [CPU performance testing](#cpu-performance-testing)
+- [Command](#command)
+- [CPU performance testing](#CPU-performance-testing)
+- [GPU performance testing](#GPU-performance-testing)
 
 ## Command
-
 - CrossMap (optional)
 - VCF proprocessing (optional)
 - VCF filtering (required)
 - Demultiplexing
 
-
 ```
 CrossMap.py vcf $LIFTOVER_FILE ./${VCF_OLD_FILENAME}.vcf $HUMAN_GENOME_REF_FILE ${VCF_FILENAME}.vcf
 ```
-
 
 ```
 vcftools --vcf ./6${VCF_FILENAME}_subsetsamples.vcf \
@@ -32,7 +29,6 @@ vcftools --vcf ./6${VCF_FILENAME}_subsetsamples.vcf \
          --out 7${VCF_FILENAME}_rm_indel
 ```
 
-
 ```
 popscle demuxlet --sam $BAM_FILE \
 	         --tag-group CB \
@@ -44,9 +40,7 @@ popscle demuxlet --sam $BAM_FILE \
 	         --sm-list $SAMPLE_LIST_FILE 
 ```
 
-
 ## CPU performance testing
-
 **ICBS server**
 
 Settings
