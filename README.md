@@ -40,49 +40,27 @@
 ## CPU specifications
 
 ### ICBS server Specifications
-
-**IP address:** 10.90.202.246
-
-**Vendor id:** GenuineIntel
-
-**Model name:** Intel Core Processor (Broadwell, IBRS)
-
-**Operating system:** Ubuntu 16.04.6 LTS (xenial)
-
-**CPUs:** 39
-
-**Memory (RAM):** 480GB
-
-
+- **IP address:** 10.90.202.246
+- **Vendor id:** GenuineIntel
+- **Model name:** Intel Core Processor (Broadwell, IBRS)
+- **Operating system:** Ubuntu 16.04.6 LTS (xenial)
+- **CPUs:** 39
+- **Memory (RAM):** 480GB
 
 ### ICT-HPC server Specification 
-
-**IP address:** 10.134.1.9
-
-**Vendor id:** AuthenticAMD
-
-**Model name:** AMD EPYC 7742 64-Core Processor
-
-**Operating System:** Ubuntu 20.04.2 LTS (focal)
-
-**CPUs:** 256
-
-**Memory (RAM):** 2TB
-
-
+- **IP address:** 10.134.1.9
+- **Vendor id:** AuthenticAMD
+- **Model name:** AMD EPYC 7742 64-Core Processor
+- **Operating System:** Ubuntu 20.04.2 LTS (focal)
+- **CPUs:** 256
+- **Memory (RAM):** 2TB
 
 ## GPU specifications
 
 ### Specification ICT-HPC server
-
-**IP address:** 10.134.1.9
-
-**Vendor id:** AuthenticAMD
-
-**Model name:** AMD EPYC 7742 64-Core Processor
-
-**Operating System:** Ubuntu 20.04.2 LTS (focal)
-
-**CPUs:** 256
-
-**Memory (RAM):** 2TB
+- **IP address:** 10.134.1.9
+- **Vendor id:** AuthenticAMD
+- **Model name:** AMD EPYC 7742 64-Core Processor
+- **Operating System:** Ubuntu 20.04.2 LTS (focal)
+- **CPUs:** 256
+- **Memory (RAM):** 2TB
