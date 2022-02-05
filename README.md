@@ -6,7 +6,7 @@
 - CrossMap (v0.6.1)
 - vcftools (v0.1.16)
 - bcftools (v1.11)
-- popscle (include _demuxlet_ v2)
+- popscle (include _demuxlet_ v2) [GitHub](https://github.com/statgen/popscle)
 - Cellranger - 6.1.2 (October 25, 2021)
 
 ### Datasets
