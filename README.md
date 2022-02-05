@@ -6,9 +6,7 @@
 - [GPU specifications](#GPU-specifications)
 
 ## Requirements
-
 ### Tools
-
 - CrossMap (v0.6.1)
 - vcftools (v0.1.16)
 - bcftools (v1.11)
@@ -17,7 +15,6 @@
 - Cellranger (v6.1.2)
 
 ### Datasets
-
 1. GEX
    - Library kit - Chromium Next GEM Single Cell 5p RNA library v2
    - Total Read1 + Read2 = 2,372,137,918 reads
@@ -45,7 +42,6 @@
 5. Demutiplexing (Using popscle)
 
 ## CPU specifications
-
 ### ICBS server Specifications
 - **IP address:** 10.90.202.246
 - **Vendor id:** GenuineIntel
@@ -63,7 +59,6 @@
 - **Memory (RAM):** 2TB
 
 ## GPU specifications
-
 ### ICT-HPC server Specifications
 - **IP address:** 10.134.1.9
 - **Vendor id:** AuthenticAMD
