@@ -20,6 +20,6 @@ VDJ reference: refdata-cellranger-vdj-GRCh38-alts-ensembl-5.0.0
 | tools                | real         | user          | sys          |
 |----------------------|--------------|---------------|--------------|
 | CrossMap             | 0m21.475s    | 0m17.708s     | 0m5.220s     | 
-| VCF preprocessing    |              |               |              | 
+| VCF preprocessing    | 0m20.619s    | 0m16.475s     | 0m3.030s     | 
 | VCF filtering        |              |               |              |
 | demuxlet             | 133m46.388s  | 132m36.092s   | 0m29.843s    |
