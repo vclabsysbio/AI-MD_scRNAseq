@@ -72,3 +72,17 @@
 
 
 ## GPU specifications
+
+### Specification ICT-HPC server
+
+**IP address:** 10.134.1.9
+
+**Vendor id:** AuthenticAMD
+
+**Model name:** AMD EPYC 7742 64-Core Processor
+
+**Operating System:** Ubuntu 20.04.2 LTS (focal)
+
+**CPUs:** 256
+
+**Memory (RAM):** 2TB
