@@ -47,7 +47,7 @@
 - **CPUs:** 39
 - **Memory (RAM):** 480GB
 
-### ICT-HPC server Specification 
+### ICT-HPC server Specifications 
 - **IP address:** 10.134.1.9
 - **Vendor id:** AuthenticAMD
 - **Model name:** AMD EPYC 7742 64-Core Processor
@@ -57,7 +57,7 @@
 
 ## GPU specifications
 
-### Specification ICT-HPC server
+### ICT-HPC server Specifications
 - **IP address:** 10.134.1.9
 - **Vendor id:** AuthenticAMD
 - **Model name:** AMD EPYC 7742 64-Core Processor
