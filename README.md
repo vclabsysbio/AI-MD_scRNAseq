@@ -14,7 +14,7 @@
 - bcftools (v1.11)
 - samtools (v1.10)
 - popscle (include _demuxlet_ v2) [GitHub](https://github.com/statgen/popscle)
-- Cellranger - 6.1.2
+- Cellranger (v6.1.2)
 
 ### Datasets
 
