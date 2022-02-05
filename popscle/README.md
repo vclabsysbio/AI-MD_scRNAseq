@@ -5,8 +5,8 @@ VClab server
 | tools                | real         | user          | sys          |
 |----------------------|--------------|---------------|--------------|
 | CrossMap             | 1m6.421s     | 0m33.508s     | 0m15.204s    | 
-| VCF preprocessing    |              |               |              | 
-| VCF filtering        |              |               |              |
+| VCF preprocessing    | 0m29.314s    | 0m23.636s     | 0m6.472s     | 
+| VCF filtering        | 0m7.860s     | 0m7.592s      | 0m0.236s     |
 | demuxlet             | 1666m37.889s | 1583m21.216s  | 27m49.324s   |
 
 
