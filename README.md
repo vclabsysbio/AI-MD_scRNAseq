@@ -39,7 +39,7 @@
 
 ## CPU specifications
 
-### Specification ICBS server
+### ICBS server Specifications
 
 **IP address:** 10.90.202.246
 
@@ -55,7 +55,7 @@
 
 
 
-### Specification ICT-HPC server
+### ICT-HPC server Specification 
 
 **IP address:** 10.134.1.9
 
