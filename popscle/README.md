@@ -1,3 +1,15 @@
+VClab server
+
+
+
+| tools                | real         | user          | sys          |
+|----------------------|--------------|---------------|--------------|
+| VCF preprocessing    |              |               |              | 
+| VCF filtering        |              |               |              |
+| demuxlet             | 1666m37.889s | 1583m21.216s  | 27m49.324s   |
+
+
+
 
 
 
