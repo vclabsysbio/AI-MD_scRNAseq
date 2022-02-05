@@ -6,5 +6,7 @@ Reference Human Genome
 
 
 Operating System Version: Ubuntu 20.04.2 LTS (focal)
+
 CPU: 
+
 Memory: 
