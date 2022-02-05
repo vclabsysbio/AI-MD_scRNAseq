@@ -22,6 +22,7 @@
 
 ### References
 - hg19ToHg38.over.chain.gz (December 31, 2013) [Download](http://hgdownload.soe.ucsc.edu/goldenPath/hg19/liftOver/hg19ToHg38.over.chain.gz)
+- Human Genome GRCh38 (January 15, 2014) [Download](https://hgdownload.cse.ucsc.edu/goldenpath/hg38/bigZips/hg38.fa.gz)
 - References - 2020-A (July 7, 2020) [Download](https://cf.10xgenomics.com/supp/cell-exp/refdata-gex-GRCh38-2020-A.tar.gz)
 - Human Reference Genome (GRCh38 2020-A: Updated July 7, 2020))
 - GRCh38 Reference - 5.0.0 (November 19, 2020) [Download](https://cf.10xgenomics.com/supp/cell-vdj/refdata-cellranger-vdj-GRCh38-alts-ensembl-5.0.0.tar.gz)
