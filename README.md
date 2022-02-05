@@ -7,7 +7,7 @@
 - vcftools
 - bcftools
 - popscle, demuxlet
-- Cellranger (6.1.2)
+- Cellranger - 6.1.2 (October 25, 2021)
 
 **Datasets**
 
