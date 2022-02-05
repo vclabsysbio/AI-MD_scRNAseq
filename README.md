@@ -42,7 +42,7 @@
 5. Demutiplexing (Using popscle)
 
 ## CPU specifications
-### ICBS server Specifications
+### ICBS server specifications
 - **IP address:** 10.90.202.246
 - **Vendor id:** GenuineIntel
 - **Model name:** Intel Core Processor (Broadwell, IBRS)
@@ -50,7 +50,7 @@
 - **CPUs:** 39
 - **Memory (RAM):** 480GB
 
-### ICT-HPC server Specifications 
+### ICT-HPC server specifications 
 - **IP address:** 10.134.1.9
 - **Vendor id:** AuthenticAMD
 - **Model name:** AMD EPYC 7742 64-Core Processor
@@ -59,7 +59,7 @@
 - **Memory (RAM):** 2TB
 
 ## GPU specifications
-### ICT-HPC server Specifications
+### ICT-HPC server specifications
 - **IP address:** 10.134.1.9
 - **Vendor id:** AuthenticAMD
 - **Model name:** AMD EPYC 7742 64-Core Processor
