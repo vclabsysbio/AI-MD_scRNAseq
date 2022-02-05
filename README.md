@@ -38,7 +38,7 @@
 
 **Operating system:** Ubuntu 16.04.6 LTS (xenial)
 
-**CPU cores:** 39
+**CPUs:** 39
 
 **Memory (RAM):** 480GB
 
@@ -48,15 +48,15 @@
 
 **IP address:** 10.134.1.9
 
-**Vendor id:** GenuineIntel
+**Vendor id:** AuthenticAMD
 
-**Model name:** Intel Core Processor (Broadwell, IBRS)
+**Model name:** AMD EPYC 7742 64-Core Processor
 
 **Operating System Version:** Ubuntu 20.04.2 LTS (focal)
 
-**CPU cores:** 
+**CPUs:** 256
 
-**Memory (RAM):** 
+**Memory (RAM):** 2TB
 
 
 
