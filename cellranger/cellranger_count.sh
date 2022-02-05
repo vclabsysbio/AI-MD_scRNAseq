@@ -1,19 +1,16 @@
-cd /home/sarintip.ngu/Covid_vac/GEX/cellranger_outputs
+cd /output-path && \
 
-ref_gex="/home/sarintip.ngu/References/refdata-gex-GRCh38-2020-A"
-
-fastq_path="/home/sarintip.ngu/Covid_vac/GEX/GEX_CV2_1/H37NYDSX3"
-
-id_name="CovidVac_B2_rxn1_612"
-
-sample_name="GEX_CV2_1"
+ref_gex="/path/refdata-gex-GRCh38-2020-A" && \
+fastq_path="/path-of-fastq-files/" && \
+id_name="idname" && \
+sample_name="prefix-of-fastq-file" && \
+expect_cells="22000"
 
 time cellranger count --id=$id_name \
 --transcriptome=$ref_gex \
 --fastqs=$fastq_path \
 --sample=$sample_name \
---expect-cells=20000 \
+--expect-cells=$expect_cells \
 --localcores=8 \
 --localmem=64 \
---chemistry=SC5P-R2 \
---r1-length=26
+--chemistry=SC5P-R2
