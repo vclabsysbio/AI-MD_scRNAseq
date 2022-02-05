@@ -47,7 +47,7 @@ popscle demuxlet --sam $BAM_FILE \
 
 ## CPU performance testing
 
-**ICBS server Specifications**
+**ICBS server**
 
 Settings
 - CPUs: xx
@@ -73,3 +73,5 @@ Settings
 | VCF preprocessing    | 0m20.619s    | 0m16.475s     | 0m3.030s     | 
 | VCF filtering        | 0m5.754s     | 0m5.492s      | 0m0.236s     |
 | demuxlet             | 133m46.388s  | 132m36.092s   | 0m29.843s    |
+
+## GPU performance testing
