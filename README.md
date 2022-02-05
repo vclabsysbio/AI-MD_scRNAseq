@@ -1,6 +1,7 @@
 # AI-MD single-cell RNA-seq
 
 - [Requirements](#Requirements)
+- [Running steps](#Running-steps)
 - [CPU specifications](#CPU-specifications)
 - [GPU specifications](#GPU-specifications)
 
@@ -35,6 +36,13 @@
 - Human Genome GRCh38 Reference (January 15, 2014) [Download](https://hgdownload.cse.ucsc.edu/goldenpath/hg38/bigZips/hg38.fa.gz)
 - GEX Reference - Human GRCh38 2020-A (July 7, 2020) [Download](https://cf.10xgenomics.com/supp/cell-exp/refdata-gex-GRCh38-2020-A.tar.gz)
 - VDJ Reference - Human GRCh38 5.0.0 (November 19, 2020) [Download](https://cf.10xgenomics.com/supp/cell-vdj/refdata-cellranger-vdj-GRCh38-alts-ensembl-5.0.0.tar.gz)
+
+## Running steps
+1. Mapping (Using Cellranger)
+2. Liftover (Using CrossMap)
+3. VCF preprocessing
+4. VCF filtering
+5. Demutiplexing (Using popscle)
 
 ## CPU specifications
 
