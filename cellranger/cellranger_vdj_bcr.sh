@@ -1,6 +1,6 @@
 cd /output-path && \
 
-ref_gex="/path/refdata-cellranger-vdj-GRCh38-alts-ensembl-5.0.0" && \
+ref_vdj="/path/refdata-cellranger-vdj-GRCh38-alts-ensembl-5.0.0" && \
 fastq_path="/path-of-BCR-fastq-files/" && \
 id_name="idname" && \
 sample_name="prefix-of-BCR-fastq-files" && \
