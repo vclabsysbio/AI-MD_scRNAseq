@@ -63,7 +63,7 @@ Settings
 | tools                | real         | user          | sys          |
 |----------------------|--------------|---------------|--------------|
 | Cellranger count     | 1233m38.423s | 6615m45.040s  | 248m10.156s  | 
-| (TCR) Cellranger vdj |
+| (TCR) Cellranger vdj | 142m44.837s  | 479m20.684s   | 27m56.532s   |
 | (BCR) Cellranger vdj | 84m51.065s   | 193m31.028s   | 18m19.740s   |
 
 
