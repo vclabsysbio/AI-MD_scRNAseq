@@ -66,6 +66,8 @@ rm ./2.1${VCF_FILENAME}_header.vcf && \
 rm ./2.1-1${VCF_FILENAME}_header_top.vcf && \
 rm ./2.1-2${VCF_FILENAME}_header_center.vcf && \
 rm ./2.1-2${VCF_FILENAME}_header_center_sorted.vcf &&\
+rm ./2.1-2${VCF_FILENAME}_header_center_chrX.vcf && \
+rm ./2.1-2${VCF_FILENAME}_header_center_chrY.vcf && \
 rm ./2.1-2${VCF_FILENAME}_header_center_chrX_Y.vcf && \
 rm ./2.1-2${VCF_FILENAME}_header_center_chrM.vcf && \
 rm ./2.1-3${VCF_FILENAME}_header_bottom.vcf && \
