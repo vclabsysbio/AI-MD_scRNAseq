@@ -35,11 +35,12 @@
 - VDJ Reference - Human GRCh38 5.0.0 (November 19, 2020) [Download](https://cf.10xgenomics.com/supp/cell-vdj/refdata-cellranger-vdj-GRCh38-alts-ensembl-5.0.0.tar.gz)
 
 ## Running steps
-1. Mapping (Using Cellranger)
-2. Liftover (Using CrossMap)
-3. VCF preprocessing
-4. VCF filtering
-5. Demutiplexing (Using popscle)
+1. [**Mapping (Using Cellranger)**](https://github.com/vclabsysbio/AI-MD_scRNAseq/tree/main/cellranger)
+2. [**Demultiplexing**](https://github.com/vclabsysbio/AI-MD_scRNAseq/tree/main/popscle)
+   1. Liftover (Using CrossMap)
+   2. VCF preprocessing
+   3. VCF filtering
+   4. Demutiplexing (Using popscle)
 
 ## CPU specifications
 ### ICBS server specifications
