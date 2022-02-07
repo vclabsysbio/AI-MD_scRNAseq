@@ -30,9 +30,19 @@ CrossMap.py vcf $LIFTOVER_FILE ./${VCF_OLD_FILENAME}.vcf $HUMAN_GENOME_REF_FILE 
 - Map vcf file - ex. `HB00004766.out.hg38.vcf`
 - Unmap vcf file - ex. `HB00004766.out.hg38.vcf.unmap`
 
-### VCF filtering
+
+### VCF proprocessing
 **Inputs**
 - Map vcf file - ex. `HB00004766.out.hg38.vcf`
+```
+(optional)
+```
+**Outputs**
+- vcf file - ex. `HB00004766.out.hg38_preprocessing.vcf`
+
+### VCF filtering
+**Inputs**
+- Map vcf file - ex. `HB00004766.out.hg38_preprocessing.vcf`
 ```
 vcftools --vcf ./6${VCF_FILENAME}_subsetsamples.vcf \
          --remove-indels \
@@ -50,13 +60,6 @@ vcftools --vcf ./6${VCF_FILENAME}_subsetsamples.vcf \
 ```
 **Outputs**
 - vcf file - ex. `HB00004766.out.hg38_excluded.recode.vcf`
-
-### VCF proprocessing
-**Inputs**
-```
-(optional)
-```
-**Outputs**
 
 ### Demultiplexing
 **Inputs**
