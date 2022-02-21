@@ -1,6 +1,7 @@
 # Mapping
 - [**Tools**](#Tools)
 - [**Commands**](#Commands)
+  - Create Cellranger singularity file
   - GEX mapping
   - VDJ mapping
     - TCR
@@ -15,6 +16,18 @@
 - Cellranger (v6.1.2)
 
 ## Commands
+### Create Cellranger singularity file
+```
+vim Dockerfile
+sudo docker build -t cellranger612 .
+sudo docker tag cellranger:latest tipsarin/cellranger612:latest
+sudo docker push tipsarin/cellranger612:latest
+```
+
+```
+singularity pull cellranger612.sif docker://docker.io/tipsarin/cellranger612
+```
+
 ### GEX mapping
 
 ```
