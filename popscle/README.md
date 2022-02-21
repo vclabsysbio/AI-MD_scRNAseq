@@ -12,10 +12,22 @@
 - popscle (include _demuxlet_ v2) [GitHub](https://github.com/statgen/popscle)
 
 ## Commands
+- **Create Popscle singularity file**
 - **CrossMap** (optional)
 - **VCF proprocessing** (optional)
 - **VCF filtering** (required)
 - **Demultiplexing**
+
+### Create Popscle singularity file
+```
+vim Dockerfile
+sudo docker build -t popscle .
+sudo docker tag popscle:latest tipsarin/popscle:latest
+sudo docker push tipsarin/popscle:latest
+```
+```
+singularity pull popscle.sif docker://docker.io/tipsarin/popscle
+```
 
 ### CrossMap
 **Inputs**
