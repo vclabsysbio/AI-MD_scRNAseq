@@ -30,6 +30,14 @@ singularity pull cellranger612.sif docker://docker.io/tipsarin/cellranger612
 
 ### GEX mapping
 
+**Inputs**
+- Fastq path - ex. `./HN00144497_10X_RawData_Outs/CVc_B2rxn2_GEX/HFTM7CCX2`
+  - Fastq files
+  - `CVc_B2rxn2_GEX_S3_L004_I1_001.fastq.gz`
+  - `CVc_B2rxn2_GEX_S3_L004_I2_001.fastq.gz`
+  - `CVc_B2rxn2_GEX_S3_L004_R1_001.fastq.gz`
+  - `CVc_B2rxn2_GEX_S3_L004_R2_001.fastq.gz`
+- VDJ reference path - ex. `./refdata-gex-GRCh38-2020-A`
 ```
 cellranger count --id=$id_name \
                  --transcriptome=$ref_gex \
@@ -40,6 +48,18 @@ cellranger count --id=$id_name \
                  --localmem=64 \
                  --chemistry=SC5P-R2
 ```
+**Outputs**
+- Run summary HTML - ex. `web_summary.html`
+- Run summary CSV - ex. `metrics_summary.csv`
+- BAM - ex. `possorted_genome_bam.bam`
+- BAM index - ex. `possorted_genome_bam.bam.bai`
+- Filtered feature-barcode matrices MEX - ex. `filtered_feature_bc_matrix`
+- Filtered feature-barcode matrices HDF5 - ex. `filtered_feature_bc_matrix.h5`
+- Unfiltered feature-barcode matrices MEX - ex. `raw_feature_bc_matrix`
+- Unfiltered feature-barcode matrices HDF5 - ex. `raw_feature_bc_matrix.h5`
+- Secondary analysis output CSV - ex. `analysis`
+- Per-molecule read information - ex. `molecule_info.h5`
+- Loupe Browser file - ex. `cloupe.cloupe`
 
 ### VDJ mapping
 - **TCR mapping**
