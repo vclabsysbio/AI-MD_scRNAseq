@@ -65,7 +65,7 @@ cellranger count --id=$id_name \
 - **TCR mapping**
 
 **Inputs**
-- Fastq path - ex. `./HN00144497_10X_RawData_Outs/CVc_B2rxn2_GEX/HFTM7CCX2`
+- Fastq path - ex. `./HN00144497_10X_RawData_Outs/CVc_B2rxn2_TCR/HFTM7CCX2`
   - Fastq files
   - `CVc_B2rxn2_TCR_S3_L004_I1_001.fastq.gz`
   - `CVc_B2rxn2_TCR_S3_L004_I2_001.fastq.gz`
@@ -113,7 +113,7 @@ cellranger vdj --id=$id_name \
 - **BCR mapping**
 - 
 **Inputs**
-- Fastq path - ex. `./HN00144497_10X_RawData_Outs/CVc_B2rxn2_GEX/HFTM7CCX2`
+- Fastq path - ex. `./HN00144497_10X_RawData_Outs/CVc_B2rxn2_BCR/HFTM7CCX2`
   - Fastq files
   - `CVc_B2rxn2_BCR_S3_L004_I1_001.fastq.gz`
   - `CVc_B2rxn2_BCR_S3_L004_I2_001.fastq.gz`
