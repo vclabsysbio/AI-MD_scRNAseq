@@ -111,7 +111,7 @@ cellranger vdj --id=$id_name \
 
 
 - **BCR mapping**
-- 
+
 **Inputs**
 - Fastq path - ex. `./HN00144497_10X_RawData_Outs/CVc_B2rxn2_BCR/HFTM7CCX2`
   - Fastq files
@@ -171,10 +171,6 @@ Settings
 | (BCR) Cellranger vdj | 84m51.065s   | 193m31.028s   | 18m19.740s   |
 
 
-
-GEX reference: refdata-gex-GRCh38-2020-A
-
-VDJ reference: refdata-cellranger-vdj-GRCh38-alts-ensembl-5.0.0
 
 ### ICT-HPC server
 
