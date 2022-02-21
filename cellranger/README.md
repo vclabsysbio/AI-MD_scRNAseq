@@ -34,10 +34,10 @@ cellranger count --id=$id_name \
 **Inputs**
 - Fastq path - ex. `./HN00144497_10X_RawData_Outs/CVc_B2rxn2_GEX/HFTM7CCX2`
   - Fastq files
-  - `CVc_B2rxn2_GEX_S3_L004_I1_001.fastq.gz`
-  - `CVc_B2rxn2_GEX_S3_L004_I2_001.fastq.gz`
-  - `CVc_B2rxn2_GEX_S3_L004_R1_001.fastq.gz`
-  - `CVc_B2rxn2_GEX_S3_L004_R2_001.fastq.gz`
+  - `CVc_B2rxn2_TCR_S3_L004_I1_001.fastq.gz`
+  - `CVc_B2rxn2_TCR_S3_L004_I2_001.fastq.gz`
+  - `CVc_B2rxn2_TCR_S3_L004_R1_001.fastq.gz`
+  - `CVc_B2rxn2_TCR_S3_L004_R2_001.fastq.gz`
 - VDJ reference path - ex. `./refdata-cellranger-vdj-GRCh38-alts-ensembl-5.0.0`
 ```
 cellranger vdj --id=$id_name \
@@ -78,7 +78,15 @@ cellranger vdj --id=$id_name \
 
 
 - **BCR mapping**
-
+- 
+**Inputs**
+- Fastq path - ex. `./HN00144497_10X_RawData_Outs/CVc_B2rxn2_GEX/HFTM7CCX2`
+  - Fastq files
+  - `CVc_B2rxn2_BCR_S3_L004_I1_001.fastq.gz`
+  - `CVc_B2rxn2_BCR_S3_L004_I2_001.fastq.gz`
+  - `CVc_B2rxn2_BCR_S3_L004_R1_001.fastq.gz`
+  - `CVc_B2rxn2_BCR_S3_L004_R2_001.fastq.gz`
+- VDJ reference path - ex. `./refdata-cellranger-vdj-GRCh38-alts-ensembl-5.0.0`
 ```
 cellranger vdj --id=$id_name \
                --reference=$ref_vdj \
@@ -88,6 +96,32 @@ cellranger vdj --id=$id_name \
                --localmem=64 \
                --chain=IG
 ```
+**Outputs**
+- Run summary HTML - ex. `web_summary.html`
+- Run summary CSV - ex. `metrics_summary.csv`
+- Clonotype info - ex. `clonotypes.csv`
+- Filtered contig sequences FASTA - ex. `filtered_contig.fasta`
+- Filtered contig sequences FASTQ - ex. `filtered_contig.fastq`
+- Filtered contigs (CSV) - ex. `filtered_contig_annotations.csv`
+- All-contig FASTA - ex. `all_contig.fasta`
+- All-contig FASTA index - ex. `all_contig.fasta.fai`
+- All-contig FASTQ - ex. `all_contig.fastq`
+- Read-contig alignments - ex. `all_contig.bam`
+- Read-contig alignment index - ex. `all_contig.bam.bai`
+- All contig annotations (JSON) - ex. `all_contig_annotations.json`
+- All contig annotations (BED) - ex. `all_contig_annotations.bed`
+- All contig annotations (CSV) - ex. `all_contig_annotations.csv`
+- Barcodes that are declared to be targetted cells - ex. `cell_barcodes.json`
+- Clonotype consensus FASTA - ex. `consensus.fasta`
+- Clonotype consensus FASTA index - ex. `consensus.fasta.fai`
+- Contig-consensus alignments - ex. `consensus.bam`
+- Contig-consensus alignment index - ex. `consensus.bam.bai`
+- Clonotype consensus annotations (CSV) - ex. `consensus_annotations.csv`
+- Concatenated reference sequences - ex. `concat_ref.fasta`
+- Concatenated reference index - ex. `concat_ref.fasta.fai`
+- Contig-reference alignments - ex. `concat_ref.bam`
+- Contig-reference alignment index - ex. `concat_ref.bam.bai`
+- Loupe V(D)J Browser file - ex. `vloupe.vloupe`
 
 ## CPU performance testing
 ### ICBS server
