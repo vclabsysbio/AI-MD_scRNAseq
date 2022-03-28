@@ -1,7 +1,8 @@
-# Demutiplexing
-- [Tools](#Tools)
-- [Data analysis pipeline](#Data-analysis-pipeline)
-- [CPU and GPU performance testing](#CPU-and-GPU-performance-testing)
+# Downstream analysis
+- [**Tools**](#Tools)
+- [**Data analysis pipeline**](#Data-analysis-pipeline)
+- [**Commands**](#Commands)
+- [**CPU and GPU performance testing**](#CPU-and-GPU-performance-testing)
 
 ## Tools
 **Python** 
@@ -36,10 +37,40 @@
 - **Visualization (dot plot & violin plot)** (optional)
 - **Save file**
 
-### Create 
+
+## Commands
+### Input data & load data
+``` {python}
+import time
+import os, wget
+
+import numpy as np
+import pandas as pd
+import scanpy as sc
+
+import warnings
+warnings.filterwarnings('ignore', 'Expected ')
+warnings.simplefilter('ignore')
 ```
 
+### Input data & load data
+``` {python}
+adata = sc.read_10x_mtx(
+    './data/',  # the directory with the `.mtx` file
+    var_names='gene_symbols',
+    cache=True) 
+adata.var_names_make_unique()
 ```
+### Prepare Data (GPU only)
+``` {python}
+
+```
+
+``` {python}
+
+```
+
+
 
 ## CPU and GPU performance testing
 ### Comparison
