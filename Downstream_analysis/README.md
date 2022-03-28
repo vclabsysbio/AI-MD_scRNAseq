@@ -45,6 +45,21 @@
 ### Comparison
 
 
+| tools                | CPU of 246 server        | CPU of ICT-HPC server          | GPU of ICT-HPC server          |
+|----------------------|--------------|---------------|--------------|
+| Input data & load data     | 682 ms  | 582 ms  | 442 ms  | 
+| Prepare Data | -   | -   | 3.83 s    |
+| Preprocessing | 385 ms   | 337 ms   | 91.7 ms    |
+| Normalization & Scaling | 140 ms | 135 ms | 4.2 ms |
+| Select Most Variable Genes | 778 ms | 1.14 s | 500 ms | 
+| Regress out  | 14.9 s | 12.8 s | 2min 39s |
+| PCA | 805 ms | 4min 15s | 786 ms |
+| Clustering | 3.88 s | 9.36 s | 18.2 s | 
+| UMAP | 7.88 s | 1min 34s | 357 ms |
+| Finding marker genes & DE analysis | 2.65 s | 1.88 s | 2.31 s |
+| Cell type identification | 762 ms | 659 ms | 689 ms |
+| Visualization | 2.28 s | 2.83 s | 3.12 s |
+| Save file | 312 ms | 210 ms | 210 ms |
 
 **246 server**
 - anaconda3
