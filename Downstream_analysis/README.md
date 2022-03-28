@@ -39,7 +39,7 @@
 
 
 ## Commands
-### Input data & load data
+### Import requirements
 ``` {python}
 import time
 import os, wget
@@ -65,18 +65,90 @@ adata.var_names_make_unique()
 ``` {python}
 
 ```
-
+### Preprocessing
 ``` {python}
+sc.pp.filter_cells(adata, min_genes=200)
+sc.pp.filter_genes(adata, min_cells=3)
 
+adata.var['mt'] = adata.var_names.str.startswith('MT-')  # annotate the group of mitochondrial genes as 'mt'
+sc.pp.calculate_qc_metrics(adata, qc_vars=['mt'], percent_top=None, log1p=False, inplace=True)
+
+adata = adata[adata.obs.n_genes_by_counts < 3000, :]
+adata = adata[adata.obs.pct_counts_mt < 20, :]
 ```
 
+### Normalization & Scaling the data
+``` {python}
+sc.pp.normalize_total(adata, target_sum=1e4)
 
+sc.pp.log1p(adata)
+```
+
+### Select Most Variable Genes
+``` {python}
+sc.pp.highly_variable_genes(adata, min_mean=0.0125, max_mean=3, min_disp=0.5)
+
+adata = adata[:, adata.var.highly_variable]
+```
+
+### Regress out confounding factors (number of counts, mitochondrial gene expression)
+``` {python}
+sc.pp.regress_out(adata, ['total_counts', 'pct_counts_mt'])
+```
+
+### Perform linear dimensional reduction
+``` {python}
+sc.tl.pca(adata, svd_solver='arpack')
+```
+### Clustering
+``` {python}
+sc.pp.neighbors(adata, n_neighbors=10, n_pcs=15)
+sc.tl.leiden(adata, resolution=0.3)
+```
+
+### Run non-linear dimensional reduction (UMAP)
+``` {python}
+sc.tl.umap(adata)
+```
+
+### Finding marker genes  & Differential expression analysis
+``` {python}
+sc.tl.rank_genes_groups(adata, groupby="leiden", n_genes=20, groups='all', reference='rest', method='wilcoxon')
+```
+
+### Cell type identification
+``` {python}
+new_cluster_names = [
+    'CD8+ T', 'Naive CD4+ T',
+    'NK', 'Memory CD4+ T',
+    'CD14+ Mono', 'B',
+    'FCGR3A+ Mono', 'Platelets',
+    'DC']
+adata.obs['leiden'] =adata.obs['leiden'].cat.rename_categories(new_cluster_names)
+sc.pl.umap(adata, color='leiden', legend_loc='on data', title='', frameon=False, save='.pdf')
+```
+
+### Visualization (dot plot & violin plot) (optional)
+``` {python}
+#Dot plot
+sc.pl.dotplot(adata, marker_genes, groupby='leiden')
+#Violin plot
+sc.pl.stacked_violin(adata, marker_genes, groupby='leiden', rotation=90)
+```
+
+### Save file
+``` {python}
+results_file = './write/filename.h5ad'
+```
+``` {python}
+adata.write(results_file)
+```
 
 ## CPU and GPU performance testing
 ### Comparison
 
 
-| tools                | CPU of 246 server        | CPU of ICT-HPC server          | GPU of ICT-HPC server          |
+| Analysis steps                | CPU of 246 server        | CPU of ICT-HPC server          | GPU of ICT-HPC server          |
 |----------------------|--------------|---------------|--------------|
 | Input data & load data     | 682 ms  | 582 ms  | 442 ms  | 
 | Prepare Data | -   | -   | 3.83 s    |
