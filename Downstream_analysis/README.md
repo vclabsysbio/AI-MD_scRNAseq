@@ -1,8 +1,8 @@
 # Downstream analysis
-- [**Tools**](#Tools)
-- [**Data analysis pipeline**](#Data-analysis-pipeline)
-- [**Commands**](#Commands)
-- [**CPU and GPU performance testing**](#CPU-and-GPU-performance-testing)
+- [Tools](#Tools)
+- [Data analysis pipeline](#Data-analysis-pipeline)
+- [Commands](#Commands)
+- [CPU and GPU performance testing](#CPU-and-GPU-performance-testing)
 
 _All commands were modified from [Scanpy](https://scanpy-tutorials.readthedocs.io/en/latest/pbmc3k.html) and [RAPIDS scRNA-seq](https://github.com/clara-parabricks/rapids-single-cell-examples)_
 
