@@ -13,6 +13,7 @@
 - samtools (v1.10)
 - popscle (include _demuxlet_ v2) [GitHub](https://github.com/statgen/popscle)
 - Cellranger (v6.1.2)
+- Scanpy (v1.8.2) (Python package)
 
 ### Datasets
 - GEX
@@ -41,6 +42,7 @@
    2. VCF preprocessing
    3. VCF filtering
    4. Demutiplexing (Using popscle)
+3. [**Downstream_analysis**](https://github.com/vclabsysbio/AI-MD_scRNAseq/tree/main/Downstream_analysis)
 
 ## CPU specifications
 ### ICBS server specifications
