@@ -61,6 +61,8 @@
 | Visualization | 2.28 s | 2.83 s | 3.12 s |
 | Save file | 312 ms | 210 ms | 210 ms |
 
+![Alt text](https://github.com/vclabsysbio/AI-MD_scRNAseq/blob/main/Downstream_analysis/Picture1.jpg?raw=true "Comparison")
+
 **246 server**
 - anaconda3
 - Jupyter notebook
