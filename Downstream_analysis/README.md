@@ -25,6 +25,8 @@ _All commands were modified from [Scanpy](https://scanpy-tutorials.readthedocs.i
 - leidenalg==0.8.9
 
 ## Data analysis pipeline
+- **Download GitHub** (GPU only)
+- **Install packages** (ICT-HPC server only)
 - **Input data & load data**
 - **Prepare Data** (GPU only)
 - **Preprocessing**
@@ -41,7 +43,7 @@ _All commands were modified from [Scanpy](https://scanpy-tutorials.readthedocs.i
 
 
 ## Commands
-### Download GitHub
+### Download GitHub (GPU only)
 ```
 git clone https://github.com/clara-parabricks/rapids-single-cell-examples.git
 ```
