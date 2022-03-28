@@ -43,6 +43,7 @@
    3. VCF filtering
    4. Demutiplexing (Using popscle)
 3. [**Downstream_analysis**](https://github.com/vclabsysbio/AI-MD_scRNAseq/tree/main/Downstream_analysis)
+   1. Scanpy
 
 ## CPU specifications
 ### ICBS server specifications
