@@ -47,7 +47,7 @@
    2. VCF preprocessing
    3. VCF filtering
    4. Demutiplexing (Using popscle)
-3. [**Downstream_analysis**](https://github.com/vclabsysbio/AI-MD_scRNAseq/tree/main/Downstream_analysis)
+3. [**Downstream analysis**](https://github.com/vclabsysbio/AI-MD_scRNAseq/tree/main/Downstream_analysis)
    1. Preprocessing
    2. Normalization & Scaling the data
    3. Select Most Variable Genes
