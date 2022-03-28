@@ -1,10 +1,17 @@
 # Downstream analysis
+
+A feature-barcode matrix derived from Cellranger will be used for scRNA-seq analysis and visualization. Scanpy is a toolkit for analysing single-cell gene expression data (Wolf *et al.*, 2018). There are many tutorials for analysis scRNA-seq data such as clustering, trajectory inference and integrating datasets and there are many type of data such as PBMC, Neuron.
+    
+(Stuart *et al.*, 2019) or Scanpy 
+
+_All commands were modified from [Scanpy](https://scanpy-tutorials.readthedocs.io/en/latest/pbmc3k.html) and [RAPIDS scRNA-seq](https://github.com/clara-parabricks/rapids-single-cell-examples)_
+
 - [Tools](#Tools)
 - [Data analysis pipeline](#Data-analysis-pipeline)
 - [Commands](#Commands)
 - [CPU and GPU performance testing](#CPU-and-GPU-performance-testing)
 
-_All commands were modified from [Scanpy](https://scanpy-tutorials.readthedocs.io/en/latest/pbmc3k.html) and [RAPIDS scRNA-seq](https://github.com/clara-parabricks/rapids-single-cell-examples)_
+
 
 ## Tools
 **Python** 
@@ -334,3 +341,10 @@ adata.write(results_file)
 - image: kubeflow/ngc-rapidsai:21.10-cuda11.0-runtime-ubuntu20.04
 - Jupyterlab
 
+
+## References
+Stuart, T., Butler, A., Hoffman, P., Hafemeister, C., Papalexi, E., Mauck III, W. M., ... & Satija, R. 
+(2019). *Comprehensive integration of single-cell data. Cell, 177*(7), 1888-1902.
+
+Wolf, F. A., Angerer, P., & Theis, F. J. (2018). SCANPY: large-scale single-cell gene expression 
+data analysis. *Genome biology, 19*(1), 1 
