@@ -1,9 +1,7 @@
 # Downstream analysis
 
-A feature-barcode matrix derived from Cellranger will be used for scRNA-seq analysis and visualization. Scanpy is a toolkit for analysing single-cell gene expression data (Wolf *et al.*, 2018). There are many tutorials for analysis scRNA-seq data such as clustering, trajectory inference and integrating datasets and there are many type of data such as PBMC, Neuron.
+A feature-barcode matrix derived from Cellranger will be used for scRNA-seq analysis and visualization. Scanpy is a toolkit for analysing single-cell gene expression data (Wolf *et al.*, 2018). There are several tutorials for analyzing scRNA-seq data, including clustering, trajectory inference, and integrating datasets, as well as a variety of data types, including PBMC and neuron. Scanpy's analysis pipeline, algorithm, and methods are similar to Seurat, an R-based package (Stuart *et al.*, 2019).
     
-(Stuart *et al.*, 2019) or Scanpy 
-
 _All commands were modified from [Scanpy](https://scanpy-tutorials.readthedocs.io/en/latest/pbmc3k.html) and [RAPIDS scRNA-seq](https://github.com/clara-parabricks/rapids-single-cell-examples)_
 
 - [Tools](#Tools)
