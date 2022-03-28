@@ -1,5 +1,9 @@
 # AI-MD single-cell RNA-seq
 
+## Description
+   This respiratory contains tools and commands to analyze single-cell RNA-seq (scRNA-seq) on general and HPC server via CPU and GPU.
+
+
 - [Requirements](#Requirements)
 - [Running steps](#Running-steps)
 - [CPU specifications](#CPU-specifications)
@@ -70,4 +74,4 @@
 - **Operating System:** Ubuntu 20.04.2 LTS (focal)
 - **CPUs:** 256
 - **Memory (RAM):** 2TB
--  **GPUs:** NVDIA A100 8 cards (2 GPUs have licenses)
+-  **GPUs:** NVIDIA DGX A100
