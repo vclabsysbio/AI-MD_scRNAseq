@@ -1,7 +1,7 @@
 # AI-MD single-cell RNA-seq
 
 ## Description
-   This respiratory contains tools and commands to analyze single-cell RNA-seq (scRNA-seq) on general and HPC server via CPU and GPU.
+   This respiratory contains tools and commands to analyze single-cell RNA-seq (scRNA-seq) on general and HPC server via CPU and GPU. The main analysis steos divide to 3 steps; 1. Mapping sequencing data with human genome reference for counting gene expression and immune receptor (TCR/BCR), 2. Processing genotype data and demultiplex pooled scRNA-seq, 3. Analyze data and visualization.
 
 
 - [Requirements](#Requirements)
