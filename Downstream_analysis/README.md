@@ -1,8 +1,7 @@
 # Demutiplexing
 - [Tools](#Tools)
 - [Data analysis pipeline](#Data-analysis-pipeline)
-- [CPU performance testing](#CPU-performance-testing)
-- [GPU performance testing](#GPU-performance-testing)
+- [CPU and GPU performance testing](#CPU-and-GPU-performance-testing)
 
 ## Tools
 **Python** 
@@ -19,23 +18,39 @@
 - statsmodels==0.13.0
 - python-igraph==0.9.9
 - pynndescent==0.5.4-0.5.6
+- igraph==0.9.7
+- leidenalg==0.8.9
 
 ## Data analysis pipeline
-- **Pre-processing**
-- **Normalization**
+- **Input data & load data**
+- **Prepare Data** (GPU only)
+- **Preprocessing**
+- **Normalization & Scaling the data**
+- **Select Most Variable Genes**
+- **Regress out confounding factors (number of counts, mitochondrial gene expression)**
+- **Perform linear dimensional reduction**
 - **Clustering**
+- **Run non-linear dimensional reduction (UMAP)**
+- **Finding marker genes  & Differential expression analysis**
 - **Cell type identification**
-- **Visualization** (optional)
+- **Visualization (dot plot & violin plot)** (optional)
+- **Save file**
 
 ### Create 
 ```
 
 ```
 
+## CPU and GPU performance testing
+### Comparison
 
 
 
+**246 server**
+- anaconda3
+- Jupyter notebook
 
+**ICT-HPC server**
+- image: kubeflow/ngc-rapidsai:21.10-cuda11.0-runtime-ubuntu20.04
+- Jupyterlab
 
-Jupyterlab
-image: kubeflow/ngc-rapidsai:21.10-cuda11.0-runtime-ubuntu20.04
