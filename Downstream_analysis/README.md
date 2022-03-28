@@ -4,6 +4,8 @@
 - [**Commands**](#Commands)
 - [**CPU and GPU performance testing**](#CPU-and-GPU-performance-testing)
 
+_All commands were modified from [Scanpy](https://scanpy-tutorials.readthedocs.io/en/latest/pbmc3k.html) and [RAPIDS scRNA-seq](https://github.com/clara-parabricks/rapids-single-cell-examples)_
+
 ## Tools
 **Python** 
 - version 3.7
@@ -39,6 +41,27 @@
 
 
 ## Commands
+### Download GitHub
+```
+git clone https://github.com/clara-parabricks/rapids-single-cell-examples.git
+```
+
+### Install packages
+``` {python}
+import sys
+sys.executable
+!{sys.executable} -m pip install wget
+!{sys.executable} -m pip install numpy
+!{sys.executable} -m pip install scipy
+!{sys.executable} -m pip install pandas
+!{sys.executable} -m pip install scikit-learn
+!{sys.executable} -m pip install statsmodels
+!{sys.executable} -m pip install leidenalg
+!{sys.executable} -m pip install anndata
+!{sys.executable} -m pip install scanpy
+!{sys.executable} -m pip install scirpy
+```
+
 ### Import requirements
 ``` {python}
 import time
@@ -63,7 +86,8 @@ adata.var_names_make_unique()
 ```
 ### Prepare Data (GPU only)
 ``` {python}
-
+genes = cudf.Series(adata.var_names)
+sparse_gpu_array = cp.sparse.csr_matrix(adata.X)
 ```
 ### Preprocessing
 ``` {python}
