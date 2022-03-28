@@ -1,7 +1,7 @@
 # AI-MD single-cell RNA-seq
 
 ## Description
-   This respiratory contains tools and commands to analyze single-cell RNA-seq (scRNA-seq) on general and HPC server via CPU and GPU. The main analysis steos divide to 3 steps; 1. Mapping sequencing data with human genome reference for counting gene expression and immune receptor (TCR/BCR), 2. Processing genotype data and demultiplex pooled scRNA-seq, 3. Analyze data and visualization.
+   This GitHub respiratory includes tools and commands for analyzing single-cell RNA-seq (scRNA-seq) on a general or HPC server using CPU and GPU. The main analysis processes are as follows: 1. Mapping sequencing data with a human genome reference for counting gene expression and immune receptor (TCR/BCR), 2. Processing genotype data and demultiplexing pooled scRNA-seq, and 3. Data analysis and visualization.
 
 
 - [Requirements](#Requirements)
@@ -17,6 +17,7 @@
 - samtools (v1.10)
 - popscle (include _demuxlet_ v2) [GitHub](https://github.com/statgen/popscle)
 - Cellranger (v6.1.2)
+- Python (v3.7)
 - Scanpy (v1.8.2) (Python package)
 
 ### Datasets
@@ -47,7 +48,16 @@
    3. VCF filtering
    4. Demutiplexing (Using popscle)
 3. [**Downstream_analysis**](https://github.com/vclabsysbio/AI-MD_scRNAseq/tree/main/Downstream_analysis)
-   1. Scanpy
+   1. Preprocessing
+   2. Normalization & Scaling the data
+   3. Select Most Variable Genes
+   4. Regress out confounding factors
+   5. Perform linear dimensional reduction
+   6. Clustering
+   7. Run non-linear dimensional reduction (UMAP)
+   8. Finding marker genes & Differential expression analysis
+   9. Cell type identification
+   10. Visualization
 
 ## CPU specifications
 ### ICBS server specifications
@@ -74,4 +84,4 @@
 - **Operating System:** Ubuntu 20.04.2 LTS (focal)
 - **CPUs:** 256
 - **Memory (RAM):** 2TB
--  **GPUs:** NVIDIA DGX A100
+-  **GPUs:** NVIDIA DGX A100 8 cards
