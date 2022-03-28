@@ -65,6 +65,7 @@ sys.executable
 ```
 
 ### Import requirements
+**CPU version**
 ``` {python}
 import time
 import os, wget
@@ -78,7 +79,44 @@ warnings.filterwarnings('ignore', 'Expected ')
 warnings.simplefilter('ignore')
 ```
 
+**GPU version**
+``` {python}
+import scanpy as sc
+import anndata
+#
+import numpy as np
+import pandas as pd
+#
+import time
+import os, wget
+
+import cudf
+import cupy as cp
+
+from cuml.decomposition import PCA
+from cuml.manifold import TSNE
+from cuml.cluster import KMeans
+from cuml.preprocessing import StandardScaler
+
+import rapids_scanpy_funcs
+
+import warnings
+warnings.filterwarnings('ignore', 'Expected ')
+warnings.simplefilter('ignore')
+
+import rmm
+
+rmm.reinitialize(
+    managed_memory=True, # Allows oversubscription
+    pool_allocator=False, # default is False
+    devices=0, # GPU device IDs to register. By default registers only GPU 0.
+)
+
+cp.cuda.set_allocator(rmm.rmm_cupy_allocator)
+```
+
 ### Input data & load data
+**CPU and GPU version**
 ``` {python}
 adata = sc.read_10x_mtx(
     './data/',  # the directory with the `.mtx` file
@@ -86,12 +124,15 @@ adata = sc.read_10x_mtx(
     cache=True) 
 adata.var_names_make_unique()
 ```
+
 ### Prepare Data (GPU only)
 ``` {python}
 genes = cudf.Series(adata.var_names)
 sparse_gpu_array = cp.sparse.csr_matrix(adata.X)
 ```
+
 ### Preprocessing
+**CPU version**
 ``` {python}
 sc.pp.filter_cells(adata, min_genes=200)
 sc.pp.filter_genes(adata, min_cells=3)
@@ -103,46 +144,135 @@ adata = adata[adata.obs.n_genes_by_counts < 3000, :]
 adata = adata[adata.obs.pct_counts_mt < 20, :]
 ```
 
+**GPU version**
+``` {python}
+sparse_gpu_array = rapids_scanpy_funcs.filter_cells(sparse_gpu_array, min_genes=200, max_genes=3000)
+sparse_gpu_array, genes = rapids_scanpy_funcs.filter_genes(sparse_gpu_array, genes, min_cells=3)
+```
+
+
 ### Normalization & Scaling the data
+**CPU version**
 ``` {python}
 sc.pp.normalize_total(adata, target_sum=1e4)
-
 sc.pp.log1p(adata)
 ```
 
+**GPU version**
+``` {python}
+sparse_gpu_array = rapids_scanpy_funcs.normalize_total(sparse_gpu_array, target_sum=1e4)
+sparse_gpu_array = sparse_gpu_array.log1p()
+```
+
 ### Select Most Variable Genes
+**CPU version**
 ``` {python}
 sc.pp.highly_variable_genes(adata, min_mean=0.0125, max_mean=3, min_disp=0.5)
 
 adata = adata[:, adata.var.highly_variable]
 ```
 
+**GPU version**
+``` {python}
+markers = ['CD8A', 'CD8B', 'IL7R', 'CCR7', 'CST7', 'KLRB1', 
+                'S100A4', 'CD14', 'LYZ', 'LGALS3', 'S100A8', 
+                'MS4A1','CD79A', #, 'GNLY', 'NKG7'
+                'FCGR3A', 'MS4A7', 'PPBP', 'FCER1A', 'CST3'] # Marker genes for visualization
+
+tmp_norm = sparse_gpu_array.tocsc()
+marker_genes_raw = {
+    ("%s_raw" % marker): tmp_norm[:, genes[genes == marker].index[0]].todense().ravel()
+    for marker in markers
+}
+
+del tmp_norm
+
+hvg = rapids_scanpy_funcs.highly_variable_genes(sparse_gpu_array, genes, n_top_genes=5000)
+
+sparse_gpu_array = sparse_gpu_array[:, hvg]
+genes = genes[hvg].reset_index(drop=True)
+sparse_gpu_array.shape
+```
+
 ### Regress out confounding factors (number of counts, mitochondrial gene expression)
+**CPU version**
 ``` {python}
 sc.pp.regress_out(adata, ['total_counts', 'pct_counts_mt'])
 ```
 
+**GPU version**
+``` {python}
+mito_genes = genes.str.startswith("MT-")
+n_counts = sparse_gpu_array.sum(axis=1)
+percent_mito = (sparse_gpu_array[:,mito_genes].sum(axis=1) / n_counts).ravel()
+
+n_counts = cp.array(n_counts).ravel()
+percent_mito = cp.array(percent_mito).ravel()
+
+sparse_gpu_array = rapids_scanpy_funcs.regress_out(sparse_gpu_array, n_counts, percent_mito)
+```
+
 ### Perform linear dimensional reduction
+**CPU version**
 ``` {python}
 sc.tl.pca(adata, svd_solver='arpack')
 ```
+
+**GPU version**
+``` {python}
+adata = anndata.AnnData(sparse_gpu_array.get())
+adata.var_names = genes.to_pandas()
+
+for name, data in marker_genes_raw.items():
+    adata.obs[name] = data.get()
+
+adata.obsm["X_pca"] = PCA(n_components=50, output_type="numpy").fit_transform(adata.X)
+```
+
 ### Clustering
+**CPU version**
 ``` {python}
 sc.pp.neighbors(adata, n_neighbors=10, n_pcs=15)
 sc.tl.leiden(adata, resolution=0.3)
 ```
 
+**GPU version**
+``` {python}
+sc.pp.neighbors(adata, n_neighbors=10, n_pcs=15, method='rapids')
+adata.obs['leiden'] = rapids_scanpy_funcs.leiden(adata, resolution=0.3)
+```
+
 ### Run non-linear dimensional reduction (UMAP)
+**CPU version**
 ``` {python}
 sc.tl.umap(adata)
 ```
 
+**GPU version**
+``` {python}
+sc.tl.umap(adata, min_dist=0.5, spread=1.0, method='rapids')
+```
+
 ### Finding marker genes  & Differential expression analysis
+**CPU version**
 ``` {python}
 sc.tl.rank_genes_groups(adata, groupby="leiden", n_genes=20, groups='all', reference='rest', method='wilcoxon')
 ```
 
+**GPU version**
+``` {python}
+cluster_labels = cudf.Series.from_categorical(adata.obs["leiden"].cat)
+genes = cudf.Series(genes)
+
+scores, names, reference = rapids_scanpy_funcs.rank_genes_groups(
+    sparse_gpu_array, 
+    cluster_labels, 
+    genes, 
+    n_genes=20, groups='all', reference='rest')
+```
+
 ### Cell type identification
+**CPU and GPU version**
 ``` {python}
 new_cluster_names = [
     'CD8+ T', 'Naive CD4+ T',
@@ -153,8 +283,10 @@ new_cluster_names = [
 adata.obs['leiden'] =adata.obs['leiden'].cat.rename_categories(new_cluster_names)
 sc.pl.umap(adata, color='leiden', legend_loc='on data', title='', frameon=False, save='.pdf')
 ```
+![Alt text](https://github.com/vclabsysbio/AI-MD_scRNAseq/blob/main/Downstream_analysis/Figures/UMAP_plot_CPU_vs_GPU.jpg?raw=true "UMAP")
 
 ### Visualization (dot plot & violin plot) (optional)
+**CPU and GPU version**
 ``` {python}
 #Dot plot
 sc.pl.dotplot(adata, marker_genes, groupby='leiden')
@@ -163,6 +295,7 @@ sc.pl.stacked_violin(adata, marker_genes, groupby='leiden', rotation=90)
 ```
 
 ### Save file
+**CPU and GPU version**
 ``` {python}
 results_file = './write/filename.h5ad'
 ```
@@ -190,7 +323,7 @@ adata.write(results_file)
 | Visualization | 2.28 s | 2.83 s | 3.12 s |
 | Save file | 312 ms | 210 ms | 210 ms |
 
-![Alt text](https://github.com/vclabsysbio/AI-MD_scRNAseq/blob/main/Downstream_analysis/Picture1.jpg?raw=true "Comparison")
+![Alt text](https://github.com/vclabsysbio/AI-MD_scRNAseq/blob/main/Downstream_analysis/Figures/Comparison_Scanpy_on_CPU_vs_GPU.jpg?raw=true "Comparison")
 
 **246 server**
 - anaconda3
