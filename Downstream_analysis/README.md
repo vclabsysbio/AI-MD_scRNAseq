@@ -12,6 +12,8 @@ _All commands in this respiratory were modified from [Scanpy](https://scanpy-tut
 
 
 ## Tools
+This analysis requires the implementation of Python as a programming language.
+
 **Python** 
 - version 3.7
 
@@ -50,11 +52,13 @@ _All commands in this respiratory were modified from [Scanpy](https://scanpy-tut
 
 ## Commands
 ### Download GitHub (GPU only)
+To begin, you must first download the "RAPIDS" suite of open-source Python libraries for GPU-accelerated analysis of single-cell sequencing data is available on GitHub (https://github.com/clara-parabricks/rapids-single-cell-examples). 
 ```
 git clone https://github.com/clara-parabricks/rapids-single-cell-examples.git
 ```
 
 ### Install packages
+For 246 server or general server, you can use conda to install the packages we mentioned earlier. For the ICT-HPC server, Kubeflow is the main system for creating instances. You can use a docker image to construct your instance. We use this image (kubeflow/ngc-rapidsai:21.10-cuda11.0-runtime-ubuntu20.04) to build the instance for this analysis, therefore we use Jupyterlab via this image.
 ``` {python}
 import sys
 sys.executable
@@ -71,6 +75,8 @@ sys.executable
 ```
 
 ### Import requirements
+From here, you can use the Scanpy instructions if you're using a CPU, or RAPIDs scRNA-seq if you're using a CPU or GPU. Scanpy, Pandas, and Numpy are the main packages that must be installed in your notebook.
+
 **CPU version**
 ``` {python}
 import time
@@ -122,6 +128,8 @@ cp.cuda.set_allocator(rmm.rmm_cupy_allocator)
 ```
 
 ### Input data & load data
+In this step, a feature-barcode matrix will be loaded.
+
 **CPU and GPU version**
 ``` {python}
 adata = sc.read_10x_mtx(
@@ -132,12 +140,15 @@ adata.var_names_make_unique()
 ```
 
 ### Prepare Data (GPU only)
+Convert the object to a sparse count matrix.
 ``` {python}
 genes = cudf.Series(adata.var_names)
 sparse_gpu_array = cp.sparse.csr_matrix(adata.X)
 ```
 
 ### Preprocessing
+Filtering out cells with fewer than 200 detected genes and the detected genes in cells with fewer than 3 cells. We established a criterion for excluding mitochondrial genes from dying cells with a percentage larger than 20%.
+
 **CPU version**
 ``` {python}
 sc.pp.filter_cells(adata, min_genes=200)
@@ -158,6 +169,8 @@ sparse_gpu_array, genes = rapids_scanpy_funcs.filter_genes(sparse_gpu_array, gen
 
 
 ### Normalization & Scaling the data
+Normalizing feature expression measurements for each cell by the overall expression and scaling the data.
+
 **CPU version**
 ``` {python}
 sc.pp.normalize_total(adata, target_sum=1e4)
@@ -171,6 +184,8 @@ sparse_gpu_array = sparse_gpu_array.log1p()
 ```
 
 ### Select Most Variable Genes
+Calculate a subset of features in the dataset that exhibit high cell-to-cell variation.
+
 **CPU version**
 ``` {python}
 sc.pp.highly_variable_genes(adata, min_mean=0.0125, max_mean=3, min_disp=0.5)
@@ -201,6 +216,8 @@ sparse_gpu_array.shape
 ```
 
 ### Regress out confounding factors (number of counts, mitochondrial gene expression)
+Unwanted sources of variation, such as cell cycle stage or mitochondrial contamination, should be removed.
+
 **CPU version**
 ``` {python}
 sc.pp.regress_out(adata, ['total_counts', 'pct_counts_mt'])
@@ -219,6 +236,8 @@ sparse_gpu_array = rapids_scanpy_funcs.regress_out(sparse_gpu_array, n_counts, p
 ```
 
 ### Perform linear dimensional reduction
+Use PCA to evaluate the scaled data. Only the variable features that have been determined before are used as input.
+
 **CPU version**
 ``` {python}
 sc.tl.pca(adata, svd_solver='arpack')
@@ -236,6 +255,8 @@ adata.obsm["X_pca"] = PCA(n_components=50, output_type="numpy").fit_transform(ad
 ```
 
 ### Clustering
+Cells with similar feature expression patterns will be grouped together in the same cluster. In this analysis, we use the Leiden algorithm.
+
 **CPU version**
 ``` {python}
 sc.pp.neighbors(adata, n_neighbors=10, n_pcs=15)
@@ -249,6 +270,8 @@ adata.obs['leiden'] = rapids_scanpy_funcs.leiden(adata, resolution=0.3)
 ```
 
 ### Run non-linear dimensional reduction (UMAP)
+Reduce the dimensionality of data using non-linear dimensional reduction tools such as UMAP.
+
 **CPU version**
 ``` {python}
 sc.tl.umap(adata)
@@ -260,6 +283,8 @@ sc.tl.umap(adata, min_dist=0.5, spread=1.0, method='rapids')
 ```
 
 ### Finding marker genes  & Differential expression analysis
+Identify markers of a single cluster by compare to all other cells.
+
 **CPU version**
 ``` {python}
 sc.tl.rank_genes_groups(adata, groupby="leiden", n_genes=20, groups='all', reference='rest', method='wilcoxon')
@@ -278,6 +303,8 @@ scores, names, reference = rapids_scanpy_funcs.rank_genes_groups(
 ```
 
 ### Cell type identification
+Identify cell type by using known marker genes.
+
 **CPU and GPU version**
 ``` {python}
 new_cluster_names = [
@@ -292,6 +319,8 @@ sc.pl.umap(adata, color='leiden', legend_loc='on data', title='', frameon=False,
 ![Alt text](https://github.com/vclabsysbio/AI-MD_scRNAseq/blob/main/Downstream_analysis/Figures/UMAP_plot_CPU_vs_GPU.jpg?raw=true "UMAP")
 
 ### Visualization (dot plot & violin plot) (optional)
+Visualizing data by using dot plot and violin plot.
+
 **CPU and GPU version**
 ``` {python}
 #Dot plot
@@ -301,6 +330,8 @@ sc.pl.stacked_violin(adata, marker_genes, groupby='leiden', rotation=90)
 ```
 
 ### Save file
+Export file in .h5ad format.
+
 **CPU and GPU version**
 ``` {python}
 results_file = './write/filename.h5ad'
